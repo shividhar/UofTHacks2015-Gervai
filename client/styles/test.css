@@ -1,5 +1,7 @@
 /* CSS declarations go here */
-
+*{
+	font-family: 'Roboto', sans-serif;
+}
 .center{
 	text-align: center;
 
@@ -13,18 +15,43 @@
 		margin-bottom: -100px;
 	}
 }
+@media screen and (max-width: 768px){
+	.damn{
+		margin-bottom: 10px
+	}
+
+}
 
 .padtop{
-	padding-top: 40px;
+margin-top: 50px;
 
 }
 
 .splash{
 	height:100vh;
-	background-image: url(https://unsplash.imgix.net/photo-1418226970361-9f1f7227d638?q=75&fm=jpg&s=4a5f190c7499eff6f7c77d88d8abf57e);
+	background-image: url(https://ununsplash.imgix.net/photo-1417007594043-344e0104c3ce?q=75&fm=jpg&s=4c279d476e8c66b3c1dcf3e8dcccd3d8);
 	color:white;
 
 }
 .splash2{
 	 margin:10% 0 30px 0;
+}
+
+.circular {
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 50px;
+	background: url(http://cdn.shopify.com/s/files/1/0273/1559/products/SchiaparelliBlackFedora.png?v=1393970277) no-repeat;
+	background-position: center;
+	}
+
+.padtop>div{
+		margin-top: 40px;
+
+	}
+
+.infobg{
+	background-color: black
 }
