@@ -8,4 +8,10 @@ if(Meteor.isServer){
 			this.ready();
 		}
 	})
+
+	Meteor.publish("userName", function(userName){
+		if(this.userId){
+			return Meteor.users.find({"userName": userName}, {fields: {userName: 1}});
+		}
+	})
 }
