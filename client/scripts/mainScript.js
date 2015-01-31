@@ -1,4 +1,4 @@
-Template.homePage.events({
+Template.mainPage.events({
 	'submit #login-form' : function(e, t){
 		e.preventDefault();
 		// retrieve the input field values
@@ -11,13 +11,14 @@ Template.homePage.events({
 		// Meteor.loginWithPassword() function.
 		Meteor.loginWithPassword(email, password, function(err){
 		if (err){return alert("Login failed. Try Again.")}
+			console.log(err)
 			Router.go("homePage");
 		});
 		return false; 
 	}
 })
 
-Template.register.events({
+Template.mainPage.events({
 'submit #register-form' : function(e, t) {
   e.preventDefault();
   var email = t.find('#account-email').value
@@ -27,6 +28,7 @@ Template.register.events({
 
   Accounts.createUser({email: email, password : password}, function(err){
       if (err) {
+      	console.log(err)
        return(alert("Registration failed. Try again."))
       } else {
         Router.go("homePage");

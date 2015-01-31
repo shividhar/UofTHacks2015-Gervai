@@ -2,3 +2,25 @@
 	height:100vh;
 	margin-top: 100px;
 }
+
+.circular{
+	height:200px;
+	width:200px;
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	background: url(/images/check.png) no-repeat;
+	position: absolute;
+
+}
+.none{
+	padding-top: 40px;
+	display:none;
+}
+body
+{
+    position: fixed; 
+    overflow-y: scroll;
+}
+
+
