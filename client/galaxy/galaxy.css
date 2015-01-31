@@ -36,7 +36,8 @@ h2 {
   color: rgba(0, 0, 0, 0.87);
   line-height: 1.3em;
   font-size: 1.93333rem;
-  font-weight: 300; }
+  font-weight: 300; 
+display: block;}
 
 h3 {
   color: rgba(0, 0, 0, 0.74);
