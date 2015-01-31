@@ -11,6 +11,8 @@ less
 nemo64:bootstrap
 bootstrap
 noorderstorm:wow
+accounts-ui
+accounts-base
 aldeed:collection2
 accounts-password
 iron:router

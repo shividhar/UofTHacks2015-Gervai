@@ -1,62 +1,67 @@
+<template name="mainPage">
+
+
 <head>
   <title>test</title>
   <script>
     new WOW().init();
     </script>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,500italic,700,700italic,300italic' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" type="text/css" href="../galaxy/galaxy.css">
+ <link rel="stylesheet" type="text/css" href="../galaxy/galaxy.min.css">
+
 </head>
 
-
 <body>
+<header>
+  <nav>
+    <a><img src="//placehold.it/150x50"></a>
+      <ul>
+         <a href="about.html"><li>About</li></a>
+         <a id="login"><li>Login</li></a>
+      </ul>
+    </nav>
+</header>
 
-<nav class="navbar navbar-default" style="margin:0px;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <!--<img alt="Brand" src="/images/fedora.png">-->
-      </a>
-    </div>
+<div id="logindrop" style="margin-top:20px;display:none" g="centered">
+<form action="#" g="">
+        <input type="email" id="login-email" placeHolder="email" />
+        <input type="password" id="login-password" placeHolder="password"/>
+        <div style="margin-top:-2px">
+        <input type="submit" id="login-button" value="Sign in"/></div>
+   </form>
+ </div>
+
+
+
+<section>
+  <div g="12 centered" style="padding-top:60px">
+    <img src="/images/gervai.png" style="margin-top:40px;margin-bottom:0px;height:100px" classs="centered">
   </div>
-</nav>
-
-<div class="col-sm-12 splash">
-	<div class="col-sm-12 row center splash2">
-    <div class="wow bounceInUp col-sm-offset-4 col-sm-4">
-        <img src="/images/gervai.png" class="imgadjust">
-  <h1 style="font-size:80px;">gervai</h1>
-  <h5>Helping Alzheimers and Dementia patients since 2015.</h5>
-</div>
-</div>
-
-<div class="row btn-acc"><!--TWO BUTTONS -->
-  <div class="col-sm-2 col-sm-offset-4">
-    <button type="button" class="btn btn-primary btn-block damn">Sign-up</button>
+  <div g="12 centered splash">
+    <h1 g="n-margin" style="font-size:80px">gervai</h1>
   </div>
-
-  <div class="col-sm-2">
-    <button type="button" class="btn btn-info btn-block">Login</button>
-  </div>
-</div>
-</div>
-
-
-
-<div class="container padtop infobg">
-<div class="row">
-<div class="col-sm-3 center wow bounceInUp">
-<div class="circular"></div>
-</div>
-<div class="col-sm-9 wow bounceInUp">
-<h4>Determine the progression of mental illnesses</h4>
-
-<p>HELLO</p>
+  <div g="12 centered">
+    <h4 g="sm-margin-t">Measuring the progression of mental illness</h4>
   </div>
 
-</div>
 
-  </div>
+</section>
 
+
+
+
+
+
+ <link rel="script" type="text/javascript" href="../galaxy/galaxy.js">
+
+ <script>
+$(document).ready(function(){
+  $("#login").click(function(){
+    $("#logindrop").toggle();
+  });
+});
+</script>
 </body>
 
 
-
+</template>
