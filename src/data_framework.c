@@ -132,9 +132,18 @@ Question* get_random_question(){
 		persist_read_data(random, question, sizeof(question));
 	}
 	else{
-		strcpy(question->text[0], pebble_qs_text[rand() % 11]);
-		question->correct = false;
-		question->difficulty = false;
+		int toPick = rand() % 2;
+		switch(toPick){
+			case 0:;
+				int num = rand() % 11;
+				strcpy(question->text[0], pebble_qs_text[num]);
+				question->correct = pebble_qs_answers[num];
+				question->difficulty = false;
+				break;
+			case 1:
+
+				break;
+		}
 	}
 
 	return question;

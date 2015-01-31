@@ -45,7 +45,6 @@ void q_window_load(Window *window){
 	Layer *window_layer = window_get_root_layer(window);
 
 	current_answer = malloc(sizeof(Answer));
-	srand(time(NULL));
 
 	x_icon = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_X_ICON);
 	check_icon = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHECKMARK_ICON);

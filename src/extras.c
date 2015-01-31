@@ -8,7 +8,7 @@ TextLayer *text_layer_init(GRect location, GTextAlignment alignment, int font){
 	text_layer_set_text_alignment(layer, alignment);
 	switch(font){
 		case 0:
-			text_layer_set_font(layer, fonts_get_system_font(FONT_KEY_GOTHIC_24_BOLD));
+			text_layer_set_font(layer, fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD));
 			break;
 		case 1:
 			text_layer_set_font(layer, fonts_get_system_font(FONT_KEY_GOTHIC_14));
