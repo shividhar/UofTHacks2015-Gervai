@@ -1,20 +1,16 @@
 if (Meteor.isClient) {
   // counter starts at 0
-Euphoria = new Mongo.Collection("euphoria");
+Accounts.ui.config({
+  passwordSignupFields: "USERNAME_ONLY"
+});
 
 
-
-  Template.hello.helpers({
+  Template.main.helpers({
  
-    euphorias: [
-      { text: "This is task 1" },
-      { text: "This is task 2" },
-      { text: "This is task 3" }
-    ]
 
   });
 
-  Template.hello.events({
+  Template.main.events({
    
 
 
