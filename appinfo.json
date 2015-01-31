@@ -11,11 +11,31 @@
   "appKeys": {
     "qp_q": 0,
     "qp_a": 1,
-    "define": 200
+    "qp_ts": 2,
+    "qp_dif": 3,
+    "define": 50,
+    "conntest": 51,
+    "senddata": 52,
+    "success": 200
   },
   "resources": {
     "media": [
-
+      {
+        "file":"images/checkmark.png",
+        "name":"IMAGE_CHECKMARK_ICON",
+        "type":"png"
+      },
+      {
+        "file":"images/x_mark.png",
+        "name":"IMAGE_X_ICON",
+        "type":"png"
+      },
+      {
+        "file":"images/menu.png",
+        "name":"MENU_ICON",
+        "type":"png",
+        "menuIcon":true
+      }
     ]
   }
 }

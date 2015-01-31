@@ -11,7 +11,7 @@ const PebbleProcessInfo __pbl_app_info __attribute__ ((section (".pbl_header")))
   .crc = 0xb6b6b6b6,
   .name = "Gervai",
   .company = "Gervai Software",
-  .icon_resource_id = DEFAULT_MENU_ICON,
+  .icon_resource_id = RESOURCE_ID_MENU_ICON,
   .sym_table_addr = 0xA7A7A7A7,
   .flags = 0,
   .num_reloc_entries = 0xdeadcafe,
