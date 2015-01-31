@@ -14,7 +14,7 @@ Template.completeSignup.events({
 
 			if(userNameSubscribe.ready()){
 				if(!Meteor.users.findOne({"userName": userName})){
-					Meteor.call("completeSignup", {firstName: firstName, lastName: lastName, age: age, gender: gender, mothersName: mothersName, fathersName: fathersName}, function(err){
+					Meteor.call("signupComplete", {firstName: firstName, lastName: lastName, age: age, gender: gender, mothersName: mothersName, fathersName: fathersName}, function(err){
 						if(err) {return alert(err.message)}
 						Router.go("homePage");
 					})
