@@ -8,8 +8,6 @@ meteor-platform
 insecure
 jquery
 less
-nemo64:bootstrap
-bootstrap
 noorderstorm:wow
 accounts-ui
 accounts-base
