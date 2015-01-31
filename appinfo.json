@@ -1,0 +1,21 @@
+{
+  "uuid": "410677c0-111b-4b24-aa93-fb34987b19ab",
+  "shortName": "Gervai",
+  "longName": "Gervai",
+  "companyName": "Gervai Software",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "qp_q": 0,
+    "qp_a": 1,
+    "define": 200
+  },
+  "resources": {
+    "media": [
+
+    ]
+  }
+}
