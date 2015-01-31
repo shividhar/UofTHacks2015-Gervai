@@ -1,30 +1,4 @@
-/* CSS declarations go here */
-
-.center{
-	text-align: center;
-
-}
-
-@media screen and (min-width: 768px){
-	.btn-acc{
-		margin-right:15px;
-	}
-	.imgadjust{
-		margin-bottom: -100px;
-	}
-}
-
-.padtop{
-	padding-top: 40px;
-
-}
-
 .splash{
 	height:100vh;
-	background-image: url(https://unsplash.imgix.net/photo-1418226970361-9f1f7227d638?q=75&fm=jpg&s=4a5f190c7499eff6f7c77d88d8abf57e);
-	color:white;
-
-}
-.splash2{
-	 margin:10% 0 30px 0;
+	margin-top: 100px;
 }

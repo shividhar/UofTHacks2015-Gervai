@@ -1,4 +1,3 @@
-
 <template name="mainPage">
 
 
@@ -7,25 +6,36 @@
   <script>
     new WOW().init();
     </script>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,500italic,700,700italic,300italic' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" type="text/css" href="../galaxy/galaxy.css">
+ <link rel="stylesheet" type="text/css" href="../galaxy/galaxy.min.css">
 
 </head>
 
 <body>
 <header>
+  <nav>
     <a><img src="//placehold.it/150x50"></a>
-    <nav>
       <ul>
          <a href="about.html"><li>About</li></a>
-         <a href="login.html" target="_blank"><li>Login</li></a>
+         <a id="login"><li>Login</li></a>
       </ul>
     </nav>
 </header>
 
+<div id="logindrop" style="margin-top:20px;display:none" g="centered">
+<form action="#" g="">
+        <input type="email" id="login-email" placeHolder="email" />
+        <input type="password" id="login-password" placeHolder="password"/>
+        <div style="margin-top:-2px">
+        <input type="submit" id="login-button" value="Sign in"/></div>
+   </form>
+ </div>
+
+
 
 <section>
-  <div g="12 centered">
-    <img src="/images/gervai.png" style="margin-top:40px;margin-bottom:0px;height:100px;" classs="centered">
+  <div g="12 centered" style="padding-top:60px">
+    <img src="/images/gervai.png" style="margin-top:40px;margin-bottom:0px;height:100px" classs="centered">
   </div>
   <div g="12 centered splash">
     <h1 g="n-margin" style="font-size:80px">gervai</h1>
@@ -39,8 +49,18 @@
 
 
 
- <link rel="stylesheet" type="text/css" href="../galaxy/galaxy.css">
+
+
+
  <link rel="script" type="text/javascript" href="../galaxy/galaxy.js">
+
+ <script>
+$(document).ready(function(){
+  $("#login").click(function(){
+    $("#logindrop").toggle();
+  });
+});
+</script>
 </body>
 
 
