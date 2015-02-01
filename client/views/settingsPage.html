@@ -54,6 +54,36 @@
   </ul>
 </div>
 
+<button onClick="sendOps()">Send to Pebble</button>
+
+<script>
+	function saveOptions() {
+        var options = {
+          'userId':     $("input[name=key0").val(),
+          'password':     $("input[name=key1").val(),
+        }
+        return options;
+      }
+       if (typeof window.localStorage !== "undefined") {
+        console.log("Not undefined :)");
+        if (window.localStorage.bops) {
+          ls_pto = JSON.parse(window.localStorage.bops);
+          $("input[name=key0]").val(ls_pto["userId"]);
+          $("input[name=key1]").val(ls_pto["password"]);
+        }
+       }
+        function sendOps() {
+          console.log("Submit");
+          ls_pto = JSON.stringify(saveOptions());
+          if (typeof window.localStorage !== "undefined") {
+            window.localStorage.bops = ls_pto;
+          }
+          var location = "pebblejs://close#" + ls_pto;
+          console.log("Warping to: " + location);
+          console.log(location);
+          document.location = location;
+        };
+</script>
 
 </section>
 
