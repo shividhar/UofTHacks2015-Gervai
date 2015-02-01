@@ -25,6 +25,36 @@
 </div>
   </div>
 </nav>
+<section class="container">
+<h1>Settings Page</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Add questions here</div>
+  <div class="panel-body">
+    <form class="form-inline">
+    	<input type="text" name="question" id="question" placeholder="enter question here" size="90">
+    <select class="form-control" id="truefalse">
+  	<option value="true">true/yes</option>
+  <option value="false">false/no</option>
+</select>
+<input type="submit" id="submit">
+
+    </form>
+  </div>
+</div>
+<div class="panel panel-default">
+
+  <div class="panel-heading">Questions posted</div>
+
+  <ul>
+  	{{#each userEditedQuestions}}
+  	<li>{{question}}</li>
+	{{/each}}
+  </ul>
+</div>
+
+
+</section>
 
 
 </template>
