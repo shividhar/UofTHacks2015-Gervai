@@ -13,14 +13,14 @@ if(Meteor.isServer){
 					var gender = signupCompleteData.gender;
 					var mothersName = signupCompleteData.mothersName;
 					var fathersName = signupCompleteData.fathersName;
-					Meteor.users.findOne({"profile.userName": userName})
+
 					if(Meteor.users.findOne({"profile.userName": userName})){
 						throw new Meteor.Error("Username is already taken.");
 					}
 
 					if(userName.indexOf("'") != 1 && firstName.indexOf("'") != 1 && lastName.indexOf("'") != 1 && !isNaN(age) && mothersName.indexOf("'") != 1 && fathersName.indexOf("'") != 1){
 						if(!!userName && !!firstName && !!lastName && !!fullName && !!age && !!gender){
-			    			Meteor.users.update(Meteor.userId(), {$set: {userName: userName, firstName: firstName, lastName: lastName, fullName: fullName, age: age, gender: gender, "signupComplete": true } });
+			    			Meteor.users.update(Meteor.userId(), {$set: {"profile.userName": userName, "profile.firstName": firstName, "profile.lastName": lastName, "profile.fullName": fullName, "profile.age": age, "profile.gender": gender, "signupComplete": true } });
 			    			Questions.insert({"authorId": Meteor.userId(), question: "Is your first name " + lastName + "?", correctAnswer: false});
 			    			Questions.insert({"authorId": Meteor.userId(), question: "Are you " + (age - 7) + " years old?", correctAnswer: false});
 			    			Questions.insert({"authorId": Meteor.userId(),question: "Is your first name " + firstName + "?", correctAnswer: true});

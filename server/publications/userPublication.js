@@ -9,8 +9,4 @@ if(Meteor.isServer){
 		}
 	})
 
-	Meteor.publish("userName", function(userName){
-		return Meteor.users.find({"_id": this.userId});
-	})
-
 }
