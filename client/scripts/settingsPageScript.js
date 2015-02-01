@@ -15,7 +15,7 @@ Template.settingsPage.helpers({
 		var userQuestionsSubscribe = Meteor.subscribe("userQuestions");
 
 		if(userQuestionsSubscribe.ready()){
-			if(Questions.find({"_id": this.authorId, userGenerated: true}).count < 5){
+			if(Questions.find({"authorId": this.authorId, userGenerated: true}).count < 5){
 				if(question != ""){
 					Questions.insert({"authorId": Meteor.userId(), "question": question, "correctAnswer": correctAnswer, "userGenerated": true});
 				}
