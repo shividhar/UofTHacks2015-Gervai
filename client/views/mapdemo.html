@@ -36,11 +36,8 @@
          map: map,
          title: 'Hello World!'
         });
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-
-        var obj;
+        
+         var obj;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function(){
                 if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
@@ -61,6 +58,9 @@
         xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
         xmlhttp.send("username=edwin&password=sucked");
         console.log("Sending load request.");
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   </head>
   <body>
