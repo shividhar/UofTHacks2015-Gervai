@@ -1,3 +1,9 @@
+if(Meteor.isClient){
+
+	Meteor.call("apiCall", function(err, result){
+		console.log(result)
+	})
+}
 Template.homePage.helpers({
 	fullName: function(){
 		if(Meteor.user()){

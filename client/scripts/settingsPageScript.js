@@ -13,9 +13,9 @@ Template.settingsPage.helpers({
 
 Template.settingsPage.events({
 	'submit form[name=questions]': function(event){
-		var question = $("#question").val();
+		var question = $("input[name=question]").val();
 		var correctAnswer = $("#truefalse").val() === "true";
-
+		
 		Meteor.call("addQuestion", {"question": question, "correctAnswer": correctAnswer}, function(err){
 			if(err) {return(alert(err.message))}
 			$("#question").val("");

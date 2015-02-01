@@ -4,6 +4,7 @@ if(Meteor.isServer){
 		addQuestion: function(questionData){
 			if(Meteor.user()){
 				if(Questions.find({"authorId": this.userId, userGenerated: true}).count() < 5){
+					console.log(questionData.question)
 					if(questionData.question != ""){
 						Questions.insert({"authorId": Meteor.userId(), "userName": Meteor.user().profile.userName, "question": questionData.question, "correctAnswer": questionData.correctAnswer, "userGenerated": true});
 					}
