@@ -1,15 +1,15 @@
 Template.completeSignup.events({
-	'click ###Form SUbmit button###' : function(e, t){
+	'click #submit' : function(e, t){
 		e.preventDefault();
 		// retrieve the input field values
-		var userName = t.find("###ID for userName").value,
-			firstName = t.find('####ID for firstName####').value,
-			lastName = t.find('####ID for lastName####').value,
-			age = t.find("####ID for age####").value,
-			gender = t.find("###ID for gender").value,
-			mothersName = t.find("###Id for mothersName").value,
-			fathersName = t.find("###Id for fathersName").value;
-
+		var userName = t.find("#userName").value,
+			firstName = t.find('#firstName').value,
+			lastName = t.find('#lastName').value,
+			age = t.find("#age").value,
+			gender = t.find("#gender").value,
+			mothersName = t.find("#mothersName").value,
+			fathersName = t.find("#fathersName").value;
+			console.log(fathersName);
 			var userNameSubscribe = Meteor.subscribe("userName", userName);
 
 			if(userNameSubscribe.ready()){
