@@ -46,6 +46,7 @@ function getData(){
 
 };
 new Chartist.Line('.ct-chart', {
+   labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
   series: [
     [12, 9, 7, 8, 5]
   ]
