@@ -3,19 +3,31 @@
     <style type="text/css">
     #login-buttons a{
 	text-decoration: none;
-}</style>
+}
+a:visited{
+  border:none;
+  outline:none;
+}
+
+a:focus {
+  border: none;
+  outline: none;
+}
+</style>
     <body> 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img alt="Brand" src="/images/top.png" style="height:25px;">
       </a>
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
+            <li><a href="/homePage">Home Page</a></li>
             <li><a href="/settingsPage">Settings Page</a></li>
+            <li><a href="/docs">API</a></li>
           </ul>
          </li> </ul>
      </div>
@@ -57,13 +69,25 @@
 
 
 </div>
+
 {{questionsAnsweredData}}
-<div class="col-md-7 col-md-offset-1" style="background-color:rgb(232,232,232);height:200px;border-radius: 5px;
+<div class="col-md-7 col-md-offset-1" style="background-color:rgb(232,232,232);height:350px;border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px">
+  <div class="ct-chart ct-perfect-fourth" style="margin-top:40px;"></div>
+
 </div>
 
+<div class="col-md-7 col-md-offset-5" style="background-color:rgb(232,232,232);height:200px;border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius:5px;margin-top:60px;">
+  <div class="ct-chart ct-perfect-fourth" style="margin-top:40px;"></div>
+
+
+  </div>
+
 </section>
+
 </body>
 
 

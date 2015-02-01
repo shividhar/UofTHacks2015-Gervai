@@ -5,6 +5,9 @@ Template.settingsPage.helpers({
 		if(userQuestionsSubscribe.ready()){
 			return Questions.find({"authorId": Meteor.userId()}).fetch();
 		}
+	},
+	userName: function(){
+		return Meteor.user().profile.userName;
 	}
 })
 

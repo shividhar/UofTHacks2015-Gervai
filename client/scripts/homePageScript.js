@@ -25,3 +25,29 @@ Template.homePage.helpers({
 		}
 	}
 })
+
+Template.homePage.rendered = function(){
+var options={
+	width: 600,
+	height: 300
+};
+
+dataAnswered =[];
+function getData(){
+
+
+
+
+};
+new Chartist.Line('.ct-chart', {
+  series: [
+    [12, 9, 7, 8, 5]
+  ]
+},options);
+
+
+// Create a new line chart object where as first parameter we pass in a selector
+// that is resolving to our chart container element. The Second parameter
+// is the actual data object.
+
+};
