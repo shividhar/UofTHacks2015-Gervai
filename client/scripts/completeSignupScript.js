@@ -1,6 +1,5 @@
 Template.completeSignup.events({
 	'click #submit' : function(e, t){
-		e.preventDefault();
 		// retrieve the input field values
 		var userName = t.find("#userName").value,
 			firstName = t.find('#firstName').value,
@@ -9,20 +8,22 @@ Template.completeSignup.events({
 			gender = t.find("#gender").value,
 			mothersName = t.find("#mothersName").value,
 			fathersName = t.find("#fathersName").value;
-			console.log(fathersName);
-			var userNameSubscribe = Meteor.subscribe("userName", userName);
 
-			if(userNameSubscribe.ready()){
-				if(!Meteor.users.findOne({"userName": userName})){
+			// var userNameSubscribe = Meteor.subscribe("userName", userName);
+			
+			// if(userNameSubscribe.ready()){
+				console.log("HIT")
+				console.log(Meteor.users.findOne())
+				// if(!Meteor.users.findOne({"profile.userName": userName})){
 					Meteor.call("signupComplete", {firstName: firstName, lastName: lastName, age: age, gender: gender, mothersName: mothersName, fathersName: fathersName}, function(err){
 						if(err) {return alert(err.message)}
 						Router.go("homePage");
 					})
-				}else{
-					return (alert("Username is already taken"));
-				}
-			}
-		
+				// }else{
+					// return (alert("Username is already taken"));
+				// }
+			// }
+		e.preventDefault();
 		return false; 
 	}
 });

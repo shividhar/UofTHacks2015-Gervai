@@ -3,7 +3,7 @@ if(Meteor.isServer){
 	Meteor.methods({
 		signupComplete: function(signupCompleteData){
 			if(Meteor.user()){
-				if(!Meteor.user.signupComplete){
+				if(!Meteor.user().signupComplete){
 					//Making sure they don't run it without setting their school and grade
 					var userName = signupCompleteData.userName;
 					var firstName = signupCompleteData.firstName;
@@ -13,7 +13,7 @@ if(Meteor.isServer){
 					var gender = signupCompleteData.gender;
 					var mothersName = signupCompleteData.mothersName;
 					var fathersName = signupCompleteData.fathersName;
-
+					Meteor.users.findOne({"profile.userName": userName})
 					if(Meteor.users.findOne({"profile.userName": userName})){
 						throw new Meteor.Error("Username is already taken.");
 					}
