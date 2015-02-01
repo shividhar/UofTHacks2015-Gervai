@@ -6,12 +6,8 @@ Template.settingsPage.helpers({
 			return Questions.find({}).fetch();
 		}
 	},
-	userEditedQuestions: function(){
-		var userQuestionsSubscribe = Meteor.subscribe("userQuestions");
-
-		if(userQuestionsSubscribe.ready()){
-			return Questions.find({"_id": this.authorId}, {fields: {question: 1, correct: 1}).fetch();
-		}
+	userName: function(){
+		return Meteor.user().profile.userName;
 	}
 })
 
@@ -31,3 +27,4 @@ Template.settingsPage.events({
 		
 	}
 })
+}

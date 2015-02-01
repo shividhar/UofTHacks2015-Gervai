@@ -26,6 +26,8 @@ a:focus {
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/homePage">Home Page</a></li>
+            <li><a href="/settingsPage">Settings Page</a></li>
+            <li><a href="/docs">API</a></li>
           </ul>
          </li> </ul>
      </div>
@@ -39,6 +41,18 @@ a:focus {
 <h1>Settings Page</h1>
 
 <div class="panel panel-default">
+  <div class="panel-heading">Sync Account to Pebble</div>
+  <div class="panel-body">
+    <h5>You must do this to secure your information!</h5>
+    <input type="text" name="username" id="username" placeholder="enter your username here" size="60">
+    <input type="text" name="password" id="question" placeholder="enter your password here" size="60">
+    <button onClick="saveAccount()">Sync</button>
+
+
+
+  </div>
+</div>
+<div class="panel panel-default">
   <div class="panel-heading">Add questions here</div>
   <div class="panel-body">
     <form name='questions' class="form-inline">
@@ -50,8 +64,9 @@ a:focus {
       <input type="submit" id="submit">
 
     </form>
-  </div>
 </div>
+</div>
+
 
 <div class="panel panel-default">
 
@@ -63,18 +78,23 @@ a:focus {
 	{{/each}}
   </ul>
 </div>
-<<<<<<< HEAD
-<h5>Close and open the pebble app to refresh your settings!</h5>
-=======
 
-<button onClick="sendOps()">Send to Pebble</button>
+
+
+<button onClick="sendOps()">Save</button>
+<h5>Close and open the pebble app to refresh your settings!</h5>
+
 
 <script>
+  
+
+/*
 	function saveOptions() {
         var options = {
           'qc_1':     $("input[name=key0").val(),
           'qc_2':     $("input[name=key1").val(),
         }
+      }
         return options;
       }
        if (typeof window.localStorage !== "undefined") {
@@ -98,10 +118,9 @@ a:focus {
         };
 </script>
 
->>>>>>> e1ec531510010aea9de0f326b71387924013b836
 </section>
 
-<script>
+<script>/*
       function saveOptions() {
         var options = {
           'qc_1':     
@@ -115,7 +134,6 @@ a:focus {
           'qc_4_a':     $("input[name=key1").val(),
           'qc_5_a':     $("input[name=key1").val(),
 
-<<<<<<< HEAD
         }
         return options;
       }
@@ -146,6 +164,3 @@ a:focus {
       });
     </script>
 </template>
-=======
-</template>
->>>>>>> e1ec531510010aea9de0f326b71387924013b836
