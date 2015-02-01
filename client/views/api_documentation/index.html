@@ -43,6 +43,7 @@ Gervai provides a public, open API for anyone to use. Currently, our only suppor
 -Coordinates and location (due to privacy concerns require a password)<br><br>
 
 <h2>Profile Data</h2>
+Profile data is a lightweight alternative to loading all of the profile information without having to have the profile's content.<br>
 Profile data POST request URL is located at http://gervai.com/api/getprofile/ <br>
 Parameters:<br>
 'username': the user's username, in plain text<br><br>
@@ -69,7 +70,8 @@ Example return response:<br>
 ]
 }
 
-<h2>Questions Answered</h2>
+<h2>Questions Answered + Profile</h2>\
+This simply provides the profile information along with questions answered and their according data.<br>
 POST request URL: http://gervai.com/api/get/
 Parameters:
 'username': the user's username, in plain text
@@ -78,7 +80,32 @@ Example URL with POST params embedded:
 http://gervai.com/api/get/?username=edwin
 
 Example response:
-[response]
+{
+"profile": [
+{
+"_id": "rFY76QJ5cbWDxWPLG",
+"profile": {
+"age": 16,
+"fathersName": "Vidya",
+"firstName": "Shivansh",
+"fullName": "Shivansh Dhar",
+"gender": "male",
+"lastName": "Dhar",
+"mothersName": "Sneh",
+"userName": "shiv"
+}
+}
+],
+"entries": [
+{
+"createdAt": "2015-02-01T12:04:36.772Z",
+"question": "what?",
+"correct": true,
+"difficult": false,
+"_id": "NEiGXsHShgvaC8NNB"
+}
+]
+}
 
 <h2>Coordinates</h2>
 Coordinates and location contain security concerns, and due to this, are only allowed access under username and password. The user's data is sent securely.<br><br>
