@@ -30,21 +30,25 @@
 <section class="container">
 <h1>Gervai Public API Alpha 1.0</h1>
 
-Gervai Public API Alpha 1.0
+Gervai Public API Beta 1.0
 
 Gervai provides a public, open API for anyone to use. Currently, our only supported format is JSON. In the future, we plan on supporting XML and other data types.
+We strongly believe in the openness of data especially for the benefit of mankind, and over time this application
+could build on some already great studies with immense amounts of public data.
 
 <h2>Supported data</h2>
+<i>* is restriction, see below.</i><br>
 -Profile data<br>
 (age, gender, name, parents, other general info)<br>
 -Questions answered<br>
 -Difficulty questions answered<br>
--MMSE scores<br><br>
+-Coordinates*<br>
+-Custom questions<br><br>
 
-<h2>Restrictions</h2>
+<h2>Restrictions</h2>m
 -Coordinates and location (due to privacy concerns require a password)<br><br>
 
-<h2>Profile Data</h2>
+<h3>Profile Data</h3>
 Profile data is a lightweight alternative to loading all of the profile information without having to have the profile's content.<br>
 Profile data POST request URL is located at http://gervai.com/api/getprofile/ <br>
 Parameters:<br>
@@ -72,7 +76,7 @@ Example return response:<br>
 ]
 }
 
-<h2>Questions Answered + Profile</h2>\
+<h3>Questions Answered + Profile</h3>
 This simply provides the profile information along with questions answered and their according data.<br>
 POST request URL: http://gervai.com/api/get/
 Parameters:
@@ -101,7 +105,7 @@ Example response:
 "entries": [
 {
 "createdAt": "2015-02-01T12:04:36.772Z",
-"question": "what?",
+"question": "Is this a question?",
 "correct": true,
 "difficult": false,
 "_id": "NEiGXsHShgvaC8NNB"
@@ -109,19 +113,79 @@ Example response:
 ]
 }
 
-<h2>Coordinates</h2>
+<h3>Coordinates</h3>
 Coordinates and location contain security concerns, and due to this, are only allowed access under username and password. The user's data is sent securely.<br><br>
 
-POST request URL: http://gervai.com/api/getcoords/<br>
+POST request URL: http://gervai.com/api/maps/custom<br>
 Parameters:<br>
 'username': the user's username<br>
 'password': the user's password, not encrypted as it'll encrypt later<br>
 
 Example URL with POST params embedded:<br>
-http://gervai.com/api/getcoords/?username=test&password=password<br><br>
+http://gervai.com/api/getcoords/?username=edwin&password=sucked<br><br>
 
 Example response:<br>
-[response]
+{
+"entries": [
+{
+"createdAt": "+047056-08-28T11:17:28.000Z",
+"authorId": "qXFHqNokqbvXqe8PA",
+"userName": "edwin",
+"latitude": 43.6595569,
+"longitude": -79.397331,
+"_id": "9mhbkBhi4ASCG8AYo"
+},
+{
+"createdAt": "+047056-08-30T01:37:42.000Z",
+"authorId": "qXFHqNokqbvXqe8PA",
+"userName": "edwin",
+"latitude": 43.6595569,
+"longitude": -79.397331,
+"_id": "dmfY8zzcQw7ksrKsH"
+},
+{
+"createdAt": "+047056-08-30T14:17:08.000Z",
+"authorId": "qXFHqNokqbvXqe8PA",
+"userName": "edwin",
+"latitude": 43.6595334,
+"longitude": -79.3980442,
+"_id": "dnwvWsCdD2SWWhyBY"
+},
+{
+"createdAt": "+047056-09-03T00:35:38.000Z",
+"authorId": "qXFHqNokqbvXqe8PA",
+"userName": "edwin",
+"latitude": 43.6595337,
+"longitude": -79.3980441,
+"_id": "zXEcbYKACk2MfK4G4"
+}
+]
+}
+
+<h3>User Custom Questions</h3>
+Users can enter their own questions for their loved one. Currently supports up to 5 questions at a time, and
+the API allows you to see this as a string and a boolean for the answer.<br><br>
+
+POST request URL: http://gervai.com/api/custom<br>
+Parameters:<br>
+-Username<br><br>
+
+Example URL with POST params embedded:<br>
+http://gervai.com/api/custom/?username=edwin<br><br>
+
+Example response: <br>
+{
+"entries": [
+{
+"authorId": "awAyzJyPeEipukb89",
+"userName": "asdfas",
+"question": "test",
+"correctAnswer": true,
+"userGenerated": true,
+"_id": "HmFoezo46RzgFGpYs"
+}
+]
+}
 
 </section>
 
