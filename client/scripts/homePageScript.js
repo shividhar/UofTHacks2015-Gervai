@@ -1,4 +1,4 @@
-Template.mainPage.helpers({
+Template.homePage.helpers({
 	fullName: function(){
 		if(Meteor.user()){
 			return Meteor.user().profile.fullName;
