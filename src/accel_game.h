@@ -1,7 +1,7 @@
 #pragma once
 
 #define MATH_PI 3.141592653589793238462
-#define NUM_DISCS 4
+#define NUM_DISCS 3
 #define DISC_DENSITY 0.25
 #define ACCEL_RATIO 0.01
 #define ACCEL_STEP_MS 50

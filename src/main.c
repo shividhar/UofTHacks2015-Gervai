@@ -9,12 +9,17 @@ void init(){
 
 	srand(time(NULL));
 
-	/*
-	q_window_init();
-	window_stack_push(q_window_get_window(), true);
-	*/
-	accel_game_init();
-	disk_window_push();
+	int randn = rand() % 4;
+	switch(randn){
+		case 3:
+			accel_game_init();
+			disk_window_push();
+			break;
+		default:
+			q_window_init();
+			window_stack_push(q_window_get_window(), true);
+			break;
+	}
 }
 
 int main(){

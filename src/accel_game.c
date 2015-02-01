@@ -2,7 +2,7 @@
 #include "extras.h"
 #include "accel_game.h"
 #include "data_framework.h"
-#define TIME_LIMIT 30
+#define TIME_LIMIT 38
 
 Disc discs[NUM_DISCS];
 double next_radius = 3;
@@ -74,7 +74,7 @@ void game_status_send(bool won){
 	else{
 		strcpy(answer.text[0], "[BALL GAME: LOSE]");
 		text_layer_set_font(time_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
-		text_layer_set_text(time_layer, "You loose! Better luck next time.");
+		text_layer_set_text(time_layer, "You loose!");
 	}
 	answer.answeredCorrectly = won;
 	answer.timestamp = (long)time(NULL);
@@ -97,6 +97,8 @@ void disc_layer_update_callback(Layer *me, GContext *ctx) {
 		disc_draw(ctx, &discs[i], i);
 		if((abs(discs[i].pos.x-circlePos[0]) > 0 && abs(discs[i].pos.x-circlePos[0]) < 5) && (abs(discs[i].pos.y-circlePos[1]) > 0 && abs(discs[i].pos.y-circlePos[1]) < 5)){
 			discs_gone[i] = true;
+			circlePos[0] = (rand() % 100)+10;
+			circlePos[1] = (rand() % 120)+25;
 		}
 		if(discs_gone[i] == true){
 			totalDiscsGone++;
@@ -157,12 +159,6 @@ void disk_window_init(Window *window){
 	window_stack_push(disk_window, true);
 }
 
-void change_callback(){
-	circlePos[0] = rand() % 120;
-	circlePos[1] = rand() % 160;
-	change_timer = app_timer_register(5000, change_callback, NULL);
-}
-
 Window *disk_window_get_window(){
 	return disk_window;
 }
@@ -170,9 +166,20 @@ Window *disk_window_get_window(){
 void tick_timer_handler(){
 	timeRunTotal++;
 
-	static char time_buffer[] = "30.";
-	snprintf(time_buffer, sizeof(time_buffer), "%d", TIME_LIMIT-timeRunTotal);
-	text_layer_set_text(time_layer, time_buffer);
+	if(timeRunTotal > 7){
+		static char time_buffer[] = "30.";
+		snprintf(time_buffer, sizeof(time_buffer), "%d", TIME_LIMIT-timeRunTotal);
+		text_layer_set_text(time_layer, time_buffer);
+	}
+	else if(timeRunTotal == 7){
+		accel_data_service_subscribe(0, NULL);
+		discTimer = app_timer_register(ACCEL_STEP_MS, discTimer_callback, NULL);
+		layer_set_hidden(disc_layer, false);
+	}
+	else{
+		text_layer_set_text(time_layer, "Put all of the balls in the hole! Move your wrist.");	
+		layer_set_hidden(disc_layer, true);
+	}
 
 	if(timeRunTotal == TIME_LIMIT){
 		game_status_send(false);
@@ -183,14 +190,8 @@ void tick_timer_handler(){
 }
 
 void disk_window_push(){
-	accel_data_service_subscribe(0, NULL);
-	discTimer = app_timer_register(ACCEL_STEP_MS, discTimer_callback, NULL);
-	change_timer = app_timer_register(5000, change_callback, NULL);
-	lose_timer = app_timer_register(1000, tick_timer_handler, NULL);
-
-	change_callback();
-
 	window_stack_push(disk_window, true);
+	tick_timer_handler();
 }
 
 void accel_game_init() {

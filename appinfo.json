@@ -3,19 +3,35 @@
   "shortName": "Gervai",
   "longName": "Gervai",
   "companyName": "Gervai Software",
-  "versionCode": 1,
+  "versionCode": 69,
   "versionLabel": "1.0",
   "watchapp": {
     "watchface": false
   },
+  "capabilities":[
+    "configurable"
+  ],
   "appKeys": {
     "qp_q": 0,
     "qp_a": 1,
     "qp_ts": 2,
     "qp_dif": 3,
+    "qc_1": 10,
+    "qc_2": 13,
+    "qc_5": 11, 
+    "qc_3": 12,
+    "qc_4": 14,
+    "qc_1_a": 15,
+    "qc_2_a": 16,
+    "qc_3_a": 17,
+    "qc_4_a": 18,
+    "qc_5_a": 19,
+    "username": 30,
+    "password": 31,
     "define": 50,
     "conntest": 51,
     "senddata": 52,
+    "sendcoords": 53,
     "success": 200
   },
   "resources": {
