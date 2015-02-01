@@ -1,9 +1,9 @@
 Template.settingsPage.helpers({
 	userEditedQuestions: function(){
-		var userQuestionsSubscribe = Meteor.subscribe("userQuestions");
+		var userQuestionsSubscribe = Meteor.subscribe("userQuestions", Meteor.user().profile.userName);
 
 		if(userQuestionsSubscribe.ready()){
-			return Questions.find({}).fetch();
+			return Questions.find({"authorId": Meteor.userId()}).fetch();
 		}
 	}
 })
