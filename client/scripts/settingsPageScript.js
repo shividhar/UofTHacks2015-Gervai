@@ -27,4 +27,3 @@ Template.settingsPage.events({
 		
 	}
 })
-}
