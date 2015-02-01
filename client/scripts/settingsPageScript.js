@@ -5,6 +5,13 @@ Template.settingsPage.helpers({
 		if(userQuestionsSubscribe.ready()){
 			return Questions.find({"_id": this.authorId, userGenerated: true});
 		}
+	},
+	userEditedQuestions: function(){
+		var userQuestionsSubscribe = Meteor.subscribe("userQuestions");
+
+		if(userQuestionsSubscribe.ready()){
+			return Questions.find({"_id": this.authorId}, {fields: {question: 1, correct: 1}).fetch();
+		}
 	}
 })
 

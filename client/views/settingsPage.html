@@ -3,12 +3,22 @@
 #login-buttons a{
 	text-decoration: none;
 }
+
+a:visited{
+  border:none;
+  outline:none;
+}
+
+a:focus {
+  border: none;
+  outline: none;
+}
 	</style>
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <img alt="Brand" src="/images/top.png" style="height:25px;">
       </a>
       <ul class="nav navbar-nav">
@@ -52,9 +62,50 @@
 	{{/each}}
   </ul>
 </div>
-
-
+<h5>Close and open the pebble app to refresh your settings!</h5>
 </section>
 
+<script>
+      function saveOptions() {
+        var options = {
+          'qc_1':     
+          'qc_2':     $("input[name=key1").val(),
+          'qc_3':     $("input[name=key0").val(),
+          'qc_4':     $("input[name=key1").val(),
+          'qc_5':     $("input[name=key0").val(),
+          'qc_1_a':     $("input[name=key1").val(),
+          'qc_2_a':     $("input[name=key1").val(),
+          'qc_3_a':     $("input[name=key1").val(),
+          'qc_4_a':     $("input[name=key1").val(),
+          'qc_5_a':     $("input[name=key1").val(),
 
+        }
+        return options;
+      }
+      $().ready(function() {
+       if (typeof window.localStorage !== "undefined") {
+        console.log("Not undefined :)");
+        if (window.localStorage.bops) {
+          ls_pto = JSON.parse(window.localStorage.bops);
+          $("input[name=key0]").val(ls_pto["userId"]);
+          $("input[name=key1]").val(ls_pto["password"]);
+        }
+       }
+        $("#b-cancel").click(function() {
+          console.log("Cancel");
+          document.location = "pebblejs://close";
+        });
+        $("#b-submit").click(function() {
+          console.log("Submit");
+          ls_pto = JSON.stringify(saveOptions());
+          if (typeof window.localStorage !== "undefined") {
+            window.localStorage.bops = ls_pto;
+          }
+          var location = "pebblejs://close#" + ls_pto;
+          console.log("Warping to: " + location);
+          console.log(location);
+          document.location = location;
+        });
+      });
+    </script>
 </template>
