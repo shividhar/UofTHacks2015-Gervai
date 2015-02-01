@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVthrjK2k1sScNeIm1RH3tOp2qGM1qdVg">
+    </script>
+    <script type="text/javascript">
+        function parse(val) {
+                var result = "Not found",
+                   tmp = [];
+                location.search
+                //.replace ( "?", "" ) 
+                // this is better, there might be a question mark inside
+                .substr(1)
+                   .split("&")
+                        .forEach(function (item) {
+                tmp = item.split("=");
+                if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+                });
+                return result;
+        }
+
+       function initialize() {
+        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+        var mapOptions = {
+         zoom: 4,
+         center: myLatlng
+        }
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);       
+
+        var marker = new google.maps.Marker({
+         position: myLatlng,
+         map: map,
+         title: 'Hello World!'
+        });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        var obj;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                        console.log("response: " + xmlhttp.responseText);
+                        obj = JSON.parse(xmlhttp.responseText);
+
+                        var latlon = new google.maps.LatLng(obj.entries[0].latitude, obj.entries[0].longitude);
+                        var marker = new google.maps.Marker({
+                        position: latlon,
+                        map: map,
+                        title: 'Example map API'
+                        });
+                }
+                console.log("status " + xmlhttp.status);
+        }
+        xmlhttp.open("POST", "http://gervai.com/api/maps/get", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+        xmlhttp.send("username=edwin&password=sucked");
+        console.log("Sending load request.");
+    </script>
+  </head>
+  <body>
+<div id="map-canvas"></div>
+  </body>
+</html>
