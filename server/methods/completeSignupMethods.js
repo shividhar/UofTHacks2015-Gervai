@@ -17,7 +17,7 @@ if(Meteor.isServer){
 					console.log(signupCompleteData)
 					if(userName.indexOf("'") == -1 && firstName.indexOf("'") == -1 && lastName.indexOf("'") == -1 && !isNaN(age) && mothersName.indexOf("'") == -1 && fathersName.indexOf("'") == -1){
 						if(!!userName && !!firstName && !!lastName && !!fullName && !!age && !!gender){
-			    			Meteor.users.update(Meteor.userId(), {$set: {"profile.userName": userName, "profile.firstName": firstName, "profile.lastName": lastName, "profile.fullName": fullName, "profile.age": age, "profile.gender": gender, "signupComplete": true } });
+			    			Meteor.users.update(Meteor.userId(), {$set: {"profile.userName": userName, "profile.firstName": firstName, "profile.lastName": lastName, "profile.fullName": fullName, "profile.age": age, "profile.gender": gender, "profile.mothersName": mothersName, "profile.fathersName": fathersName, "signupComplete": true} });
 			    			Questions.insert({"authorId": Meteor.userId(), question: "Is your first name " + lastName + "?", correctAnswer: false});
 			    			Questions.insert({"authorId": Meteor.userId(), question: "Are you " + (age - 7) + " years old?", correctAnswer: false});
 			    			Questions.insert({"authorId": Meteor.userId(),question: "Is your first name " + firstName + "?", correctAnswer: true});
