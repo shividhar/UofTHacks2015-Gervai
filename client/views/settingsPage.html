@@ -41,17 +41,18 @@ a:focus {
 <div class="panel panel-default">
   <div class="panel-heading">Add questions here</div>
   <div class="panel-body">
-    <form class="form-inline">
-    	<input type="text" name="question" id="question" placeholder="enter question here" size="90">
-    <select class="form-control" id="truefalse">
-  	<option value="true">true/yes</option>
-  <option value="false">false/no</option>
-</select>
-<input type="submit" id="submit">
+    <form name='questions' class="form-inline">
+      <input type="text" name="question" id="question" placeholder="enter question here" size="90">
+      <select class="form-control" id="truefalse">
+        <option value="true">true/yes</option>
+        <option value="false">false/no</option>
+      </select>
+      <input type="submit" id="submit">
 
     </form>
   </div>
 </div>
+
 <div class="panel panel-default">
 
   <div class="panel-heading">Questions posted</div>
@@ -62,7 +63,42 @@ a:focus {
 	{{/each}}
   </ul>
 </div>
+<<<<<<< HEAD
 <h5>Close and open the pebble app to refresh your settings!</h5>
+=======
+
+<button onClick="sendOps()">Send to Pebble</button>
+
+<script>
+	function saveOptions() {
+        var options = {
+          'qc_1':     $("input[name=key0").val(),
+          'qc_2':     $("input[name=key1").val(),
+        }
+        return options;
+      }
+       if (typeof window.localStorage !== "undefined") {
+        console.log("Not undefined :)");
+        if (window.localStorage.bops) {
+          ls_pto = JSON.parse(window.localStorage.bops);
+          $("input[name=key0]").val(ls_pto["userId"]);
+          $("input[name=key1]").val(ls_pto["password"]);
+        }
+       }
+        function sendOps() {
+          console.log("Submit");
+          ls_pto = JSON.stringify(saveOptions());
+          if (typeof window.localStorage !== "undefined") {
+            window.localStorage.bops = ls_pto;
+          }
+          var location = "pebblejs://close#" + ls_pto;
+          console.log("Warping to: " + location);
+          console.log(location);
+          document.location = location;
+        };
+</script>
+
+>>>>>>> e1ec531510010aea9de0f326b71387924013b836
 </section>
 
 <script>
@@ -79,6 +115,7 @@ a:focus {
           'qc_4_a':     $("input[name=key1").val(),
           'qc_5_a':     $("input[name=key1").val(),
 
+<<<<<<< HEAD
         }
         return options;
       }
@@ -109,3 +146,6 @@ a:focus {
       });
     </script>
 </template>
+=======
+</template>
+>>>>>>> e1ec531510010aea9de0f326b71387924013b836

@@ -1,0 +1,127 @@
+<template name="settingsPage">
+	<style type="text/css">
+#login-buttons a{
+	text-decoration: none;
+}
+	</style>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="/images/top.png" style="height:25px;">
+      </a>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/homePage">Home Page</a></li>
+          </ul>
+         </li> </ul>
+     </div>
+    
+    <div style="margin-top:15px;">
+    {{> loginButtons}}
+</div>
+  </div>
+</nav>
+<section class="container">
+<h1>Gervai Public API Alpha 1.0</h1>
+
+Gervai Public API Alpha 1.0
+
+Gervai provides a public, open API for anyone to use. Currently, our only supported format is JSON. In the future, we plan on supporting XML and other data types.
+
+<h2>Supported data</h2>
+-Profile data<br>
+(age, gender, name, parents, other general info)<br>
+-Questions answered<br>
+-Difficulty questions answered<br>
+-MMSE scores<br><br>
+
+<h2>Restrictions</h2>
+-Coordinates and location (due to privacy concerns require a password)<br><br>
+
+<h2>Profile Data</h2>
+Profile data is a lightweight alternative to loading all of the profile information without having to have the profile's content.<br>
+Profile data POST request URL is located at http://gervai.com/api/getprofile/ <br>
+Parameters:<br>
+'username': the user's username, in plain text<br><br>
+
+Example URL (with POST params embedded)<br>
+http://gervai.com/api/getprofile/?username=edwin<br><br>
+
+Example return response:<br>
+{
+"entries": [
+{
+"_id": "rFY76QJ5cbWDxWPLG",
+"profile": {
+"age": 16,
+"fathersName": "Vidya",
+"firstName": "Shivansh",
+"fullName": "Shivansh Dhar",
+"gender": "male",
+"lastName": "Dhar",
+"mothersName": "Sneh",
+"userName": "shiv"
+}
+}
+]
+}
+
+<h2>Questions Answered + Profile</h2>\
+This simply provides the profile information along with questions answered and their according data.<br>
+POST request URL: http://gervai.com/api/get/
+Parameters:
+'username': the user's username, in plain text
+
+Example URL with POST params embedded:
+http://gervai.com/api/get/?username=edwin
+
+Example response:
+{
+"profile": [
+{
+"_id": "rFY76QJ5cbWDxWPLG",
+"profile": {
+"age": 16,
+"fathersName": "Vidya",
+"firstName": "Shivansh",
+"fullName": "Shivansh Dhar",
+"gender": "male",
+"lastName": "Dhar",
+"mothersName": "Sneh",
+"userName": "shiv"
+}
+}
+],
+"entries": [
+{
+"createdAt": "2015-02-01T12:04:36.772Z",
+"question": "what?",
+"correct": true,
+"difficult": false,
+"_id": "NEiGXsHShgvaC8NNB"
+}
+]
+}
+
+<h2>Coordinates</h2>
+Coordinates and location contain security concerns, and due to this, are only allowed access under username and password. The user's data is sent securely.<br><br>
+
+POST request URL: http://gervai.com/api/getcoords/<br>
+Parameters:<br>
+'username': the user's username<br>
+'password': the user's password, not encrypted as it'll encrypt later<br>
+
+Example URL with POST params embedded:<br>
+http://gervai.com/api/getcoords/?username=test&password=password<br><br>
+
+Example response:<br>
+[response]
+
+</section>
+
+
+</template>
