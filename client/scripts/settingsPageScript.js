@@ -1,9 +1,9 @@
 Template.settingsPage.helpers({
 	userEditedQuestions: function(){
-		var userQuestionsSubscribe = Meteor.subscribe("userQuestions");
+		var userQuestionsSubscribe = Meteor.subscribe("userQuestions", Meteor.user().profile.userName);
 
 		if(userQuestionsSubscribe.ready()){
-			return Questions.find({}).fetch();
+			return Questions.find({"authorId": Meteor.userId()}).fetch();
 		}
 	},
 	userName: function(){
@@ -13,9 +13,9 @@ Template.settingsPage.helpers({
 
 Template.settingsPage.events({
 	'submit form[name=questions]': function(event){
-		var question = $("#question").val();
+		var question = $("input[name=question]").val();
 		var correctAnswer = $("#truefalse").val() === "true";
-
+		
 		Meteor.call("addQuestion", {"question": question, "correctAnswer": correctAnswer}, function(err){
 			if(err) {return(alert(err.message))}
 			$("#question").val("");
@@ -24,29 +24,21 @@ Template.settingsPage.events({
 
 		return false;
 		event.preventDefault();
-		
-	}
-})
-
-Template.settingsPage.rendered = function(){
-	function saveAccount(){
+	},
+	'click button[name=sync]': function(event){
         var options = {
-          'username':     $("#username").val(),
-          'password':     $("#password").val(),
+          'username':     $("input[name=username]").val(),
+          'password':     $("input[name=password]").val(),
         };
-        return options;
-      };
         
-      
        if (typeof window.localStorage !== "undefined") {
-        console.log("Not undefined :)");
         if (window.localStorage.bops) {
           ls_pto = JSON.parse(window.localStorage.bops);
-          $("input[name=key0]").val(ls_pto["#username"]);
-          $("input[name=key1]").val(ls_pto["#password"]);
+          $("input[name=key0]").val(ls_pto["input[name=username]"]);
+          $("input[name=key1]").val(ls_pto["input[name=password]"]);
         }
        }
-        function sendOps() {
+        function saveAccount() {
           console.log("Submit");
           ls_pto = JSON.stringify(saveOptions());
           if (typeof window.localStorage !== "undefined") {
@@ -57,5 +49,14 @@ Template.settingsPage.rendered = function(){
           console.log(location);
           document.location = location;
         };
+
+		event.preventDefault();
+		return false;
+	}
+})
+
+
+Template.settingsPage.rendered = function(){
+	
 
     };

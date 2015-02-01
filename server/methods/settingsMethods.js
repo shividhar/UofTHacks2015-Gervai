@@ -4,8 +4,9 @@ if(Meteor.isServer){
 		addQuestion: function(questionData){
 			if(Meteor.user()){
 				if(Questions.find({"authorId": this.userId, userGenerated: true}).count() < 5){
+					console.log(questionData.question)
 					if(questionData.question != ""){
-						Questions.insert({"authorId": Meteor.userId(), "question": questionData.question, "correctAnswer": questionData.correctAnswer, "userGenerated": true});
+						Questions.insert({"authorId": Meteor.userId(), "userName": Meteor.user().profile.userName, "question": questionData.question, "correctAnswer": questionData.correctAnswer, "userGenerated": true});
 					}
 				}else{
 					throw new Meteor.Error("Max limit of questions has reached.")

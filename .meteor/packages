@@ -17,3 +17,5 @@ mrt:normalize.css
 jparker:crypto-sha256
 mfpierre:chartist-js
 jquery
+http
+dburles:google-maps
