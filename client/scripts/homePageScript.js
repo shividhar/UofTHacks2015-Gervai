@@ -11,17 +11,17 @@ Template.homePage.helpers({
 	},
 	gender: function(){
 		if(Meteor.user()){
-			return Meteor.user().gender;
+			return Meteor.user().profile.gender;
 		}
 	},
 	mothersName: function(){
 		if(Meteor.user()){
-			return Meteor.user().mothersName;
+			return Meteor.user().profile.mothersName;
 		}
 	},
 	fathersName: function(){
 		if(Meteor.user()){
-			return Meteor.user().fathersName;
+			return Meteor.user().profile.fathersName;
 		}
 	}
 })
